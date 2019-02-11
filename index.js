@@ -11,12 +11,22 @@ app.use(cors())
 
 app.get('/api/posts', (req, res) => {
   Post.find({})
-    .then((posts) => {
+    .then(posts => {
       res.json(posts)
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err)
     })
+})
+
+app.get('/api/posts/:id', (req, res) => {
+  Post.find({ _id: req.params.id })
+  .then(post => {
+    res.json(post)
+  })
+  .catch(err => {
+    console.log(err)
+  })
 })
 
 app.listen(app.get('port'), () => {
