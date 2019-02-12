@@ -31,7 +31,7 @@ app.get('/api/posts/:id', (req, res) => {
 })
 
 app.delete('/api/posts/:id', (req, res) => {
-  Post.findByIdAndDelete({ _id: req.params.id })
+  Post.findByIdAndDelete(req.params.id)
   .then(() => {
     res.send('hello world')
   })
