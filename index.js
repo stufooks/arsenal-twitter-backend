@@ -11,6 +11,7 @@ app.use(cors())
 
 app.get('/api/posts', (req, res) => {
   Post.find({})
+    .sort([["likes", -1]])
     .then(posts => {
       res.json(posts)
     })
@@ -41,6 +42,16 @@ app.delete('/api/posts/:id', (req, res) => {
 
 app.post('/api/posts', (req,res) => {
   Post.create(req.body)
+  .then(post => {
+    res.json(post)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+})
+
+app.put('/api/posts/:id', (req, res) => {
+  Post.findByIdAndUpdate(req.params.id, {$set: {likes: req.body.likes }})
   .then(post => {
     res.json(post)
   })
