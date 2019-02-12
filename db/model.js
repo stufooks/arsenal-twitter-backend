@@ -3,7 +3,7 @@ const mongoose = require('./connection')
 const Post = new mongoose.Schema({
   author: String,
   content: String,
-  createAt: {
+  createdAt: {
     type: Date,
     default: Date.now
   }

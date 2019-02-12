@@ -29,6 +29,16 @@ app.get('/api/posts/:id', (req, res) => {
   })
 })
 
+app.delete('/api/posts/:id'), (req, res) => {
+  Post.findByIdAndDelete({ _id: req.params.id })
+  .then(() => {
+    res.send('hello world')
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
 app.listen(app.get('port'), () => {
   console.log('Server listening on port ' + app.get('port'))
 })
