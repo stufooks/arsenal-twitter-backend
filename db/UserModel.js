@@ -1,16 +1,13 @@
-const mongoose = require('./connection')
+const mongoose = require('mongoose')
 
-const Post = new mongoose.Schema({
-  author: String,
-  content: String,
-  likes: {
-    type: Number,
-    default: 0
-  },
+const User = new mongoose.Schema({
+  email: String,
+  username: String,
+  password: String,
   createdAt: {
     type: Date,
     default: Date.now
   }
 })
 
-module.exports = mongoose.model('Post', Post)
+module.exports = mongoose.model('User', User)
