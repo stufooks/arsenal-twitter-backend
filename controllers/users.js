@@ -40,7 +40,7 @@ router.post("/login", (req, res) => {
     if (user) {
       if (user.password === req.body.password) {
         var payload = {
-          id: user.id
+          username: user.username
         };
         var token = jwt.encode(payload, config.jwtSecret);
         res.json({

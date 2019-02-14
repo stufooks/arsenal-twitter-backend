@@ -25,9 +25,16 @@ router.get('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  Post.findByIdAndDelete(req.params.id)
-  .then(() => {
-    res.send('hello world')
+  Post.findById(req.params.id)
+  .then(post => {
+    if(post.author === req.body.username) {
+      Post.findByIdAndDelete(req.params.id)
+        .then(() => {
+          res.send(true)
+        })
+      } else {
+        res.send(false)
+      }
   })
   .catch(err => {
     console.log(err)
