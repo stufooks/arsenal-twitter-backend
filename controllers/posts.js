@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const Post = require('../db/UserModel')
+const Post = require('../db/PostModel')
 
 router.get('/', (req, res) => {
   Post.find({})

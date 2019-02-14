@@ -1,4 +1,4 @@
-const Post = require('./model')
+const Post = require('./PostModel')
 
 Post.create(
   {
