@@ -13,15 +13,12 @@ router.post("/signup", (req, res) => {
     username: req.body.username,
     password: req.body.password
   };
-  console.log(newUser)
   User.findOne({ email: req.body.email }).then(user => {
     if (!user) {
-      console.log('layer 1')
       User.create(newUser).then(user => {
         if (user) {
-          console.log('layer 2')
           var payload = {
-            id: newUser.id
+            username: user.username
           };
           var token = jwt.encode(payload, config.jwtSecret);
           res.json(token);
