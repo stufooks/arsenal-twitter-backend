@@ -21,7 +21,9 @@ router.post("/signup", (req, res) => {
             username: user.username
           };
           var token = jwt.encode(payload, config.jwtSecret);
-          res.json(token);
+          res.json({
+            token: token
+          });
         } else {
           res.sendStatus(401);
         }
